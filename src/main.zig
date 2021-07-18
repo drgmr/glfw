@@ -1,8 +1,6 @@
 const std = @import("std");
 const mem = std.mem;
 
-const builtin = @import("builtin");
-
 const c = @import("./c.zig");
 pub usingnamespace @import("./monitor.zig");
 pub usingnamespace @import("./window.zig");
@@ -175,12 +173,12 @@ fn toGLFWBool(value: bool) i32 {
 /// GLFW library. It is intended for when you are using GLFW as a shared
 /// library and want to ensure that you are using the minimum required
 /// version.
-pub fn getVersion() builtin.Version {
+pub fn getVersion() std.builtin.Version {
     var major: i32 = 0;
     var minor: i32 = 0;
     var patch: i32 = 0;
     c.glfwGetVersion(&major, &minor, &patch);
-    return builtin.Version{ .major = @intCast(u32, major), .minor = @intCast(u32, minor), .patch = @intCast(u32, patch) };
+    return std.builtin.Version{ .major = @intCast(u32, major), .minor = @intCast(u32, minor), .patch = @intCast(u32, patch) };
 }
 
 /// This function returns the compile-time generated version string of
