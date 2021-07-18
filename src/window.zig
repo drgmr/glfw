@@ -902,7 +902,7 @@ pub const Window = struct {
         };
 
         if (handle) |h| {
-            return glfw.Monitor{ .handle = handle };
+            return glfw.Monitor{ .handle = h };
         } else {
             return null;
         }
